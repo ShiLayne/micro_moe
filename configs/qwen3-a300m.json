@@ -1,0 +1,57 @@
+{
+  "_comment": "Qwen3-A300M: architecture-preserving shrink of Qwen3-30B-A3B (30.53B total / 3.35B active) down to ~1.29B total / ~296M active. Pass with: python train.py --config configs/qwen3-a300m.json",
+  "_ratios_preserved": {
+    "q_proj_dim / hidden_size": 2.0,
+    "moe_intermediate_size / hidden_size": 0.375,
+    "num_experts_per_tok / num_experts": 0.0625,
+    "num_key_value_heads": 4,
+    "head_dim": 128,
+    "attention_bias": false,
+    "norm_topk_prob": true,
+    "all_layers_moe": true
+  },
+  "_tradeoff": "tie_word_embeddings=true is required: with vocab_size=151936 and an untied head, embedding + lm_head alone are 311.2M parameters, which is already more than the 300M active budget.",
+
+  "vocab_size": 151936,
+  "hidden_size": 1024,
+  "intermediate_size": 3072,
+  "num_hidden_layers": 14,
+
+  "num_attention_heads": 16,
+  "num_key_value_heads": 4,
+  "head_dim": 128,
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "use_sliding_window": false,
+  "sliding_window": null,
+
+  "hidden_act": "silu",
+  "rms_norm_eps": 1e-06,
+
+  "max_position_embeddings": 4096,
+  "rope_theta": 1000000.0,
+  "rope_scaling": null,
+
+  "num_experts": 64,
+  "num_experts_per_tok": 4,
+  "moe_intermediate_size": 384,
+  "norm_topk_prob": true,
+  "decoder_sparse_step": 1,
+  "mlp_only_layers": [],
+  "router_fp32": true,
+
+  "router_aux_loss_coef": 0.001,
+  "router_z_loss_coef": 0.0001,
+
+  "initializer_range": 0.02,
+  "use_depth_scaled_residual_init": true,
+
+  "moe_experts_impl": "grouped_mm",
+  "attn_impl": "sdpa",
+
+  "tie_word_embeddings": true,
+  "use_cache": true,
+  "pad_token_id": 151643,
+  "bos_token_id": 151643,
+  "eos_token_id": 151645
+}

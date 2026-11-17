@@ -1,0 +1,17 @@
+# training artefacts
+runs/
+*.pt
+*.bin
+*.safetensors
+*.safetensors.index.json
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# tooling
+.DS_Store
+.ipynb_checkpoints/
